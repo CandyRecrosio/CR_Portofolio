@@ -24,4 +24,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: eu-west-2  # Replace with your AWS region
         run: |
-          aws s3 sync . s3://[bucket name]/
+          aws s3 sync . s3://mystaticwebsite-cr258/
