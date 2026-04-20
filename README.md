@@ -21,7 +21,7 @@ I created my personal AWS account to start building projects and apply my simula
 
 ### Setting Up an S3 Bucket for a Static Website
 
-- Open the AWS Console (check which AWS region your account is set to when you do this, and modify it if needed — make sure to write it down).
+- Open the AWS Console (check which AWS region your account is set to when you do this, and modify it if needed & make sure to write it down).
 - Click Create bucket, keep all settings as default, and choose a unique bucket name.
 
 Once the bucket is created:
@@ -138,18 +138,20 @@ jobs:
        run: |
          aws s3 sync . s3://[bucket name]/
 ```
-In my setup, I had to remove these lines because they were causing an error during execution. I am not certain whether this issue was related to macOS, a version difference, or an outdated example, but removing them resolved the problem.
+In my setup, I removed these lines because they were causing an execution error in the GitHub Actions workflow. This step was no longer required, as the GitHub Actions runner already includes the AWS CLI by default. The issue was caused by using an older template where the AWS CLI needed to be installed manually.
+Removing this step resolved the error and allowed the workflow to run successfully.
 
-Below is the updated YAML code version used in this project after removing the lines that were causing errors.
 
 ```yaml
+# AWS CLI installation removed – GitHub Actions runners already include awscli by default.
 ### Install AWS CLI
 - name: Install AWS CLI
   run: |
    sudo apt-get update
    sudo apt-get install -y awscli
 ```
- So my yaml text is a below 
+
+Below is the updated YAML code version used in this project after removing the unnecessary lines.
 
  ```yaml
  name: Sync with S3
@@ -201,7 +203,7 @@ After fixing these issues, the workflow ran successfully. When a workflow run fa
 ✅ The green check marks indicate successful runs. This confirms that the HTML content was uploaded to the S3 bucket correctly. You can also verify this by checking the bucket contents directly in the AWS Console.
 You can then use the S3 static website endpoint URL to access the deployed webpage:
 
-http://mystaticwebsite-cre258.s3-website.eu-west-2.amazonaws.com
+[My static webiste link](http://mystaticwebsite-cre258.s3-website.eu-west-2.amazonaws.com)
 
 The second successful run represents a small update made to the webpage, which confirms that changes pushed to the repository are correctly deployed through the CI/CD pipeline.
 
