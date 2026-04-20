@@ -203,7 +203,7 @@ After fixing these issues, the workflow ran successfully. When a workflow run fa
 ✅ The green check marks indicate successful runs. This confirms that the HTML content was uploaded to the S3 bucket correctly. You can also verify this by checking the bucket contents directly in the AWS Console.
 You can then use the S3 static website endpoint URL to access the deployed webpage:
 
-[My static webiste link](http://mystaticwebsite-cre258.s3-website.eu-west-2.amazonaws.com)
+[My static website link](http://mystaticwebsite-cre258.s3-website.eu-west-2.amazonaws.com)
 
 The second successful run represents a small update made to the webpage, which confirms that changes pushed to the repository are correctly deployed through the CI/CD pipeline.
 
